@@ -1,0 +1,11 @@
+*{
+    border-color: red;
+}
+.calculator {
+    display: flexbox;
+    flex-wrap: wrap;
+}
+.numeros {
+    display: flexbox;
+    
+}

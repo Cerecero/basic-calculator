@@ -2,7 +2,7 @@
     margin: 1;;
     padding: 0;
     box-sizing: border-box;
-    outline: 1px red solid;
+    /*outline: 1px red solid;*/
 }
 button{
     cursor: pointer;
@@ -44,7 +44,7 @@ button{
 .numbers{
     width: 90%;
     background-color: red;
-
+    border-radius: 0 0 0 20px;
 }
 .numbers button{
     width: 32%;
@@ -54,6 +54,9 @@ button{
     color: #fff;
     border: 1 solid #fff;
     
+}
+.numbers button:nth-child(10){
+    border-radius: 0 0 0 20px;
 }
 .operations{
     width: 40%;
@@ -75,4 +78,5 @@ button{
 .operations button:nth-child(7){
     width: 100%;
     background-color: #00f;
+    border-radius: 0 0 20px;
 }

@@ -17,13 +17,24 @@
 const inputText = document.getElementById('text');
 const clear = document.getElementById('clear');
 const delButton = document.getElementById('delete');
+const numbers = document.querySelectorAll('.number');
+
+numbers.forEach((number) => {
+    number.addEventListener('click', function(event) {
+        inputText.value += number.value;
+        if (inputText.value.length > 10) {
+            event.preventDefault();
+            inputText.value = inputText.value.slice(0, 10);
+        }
+    });
+});
 
 delButton.addEventListener('click', () => {
     inputText.value = inputText.value.slice(0, -1);
 });
 
 clear.addEventListener('click', () =>{
-    inputText.value = '';12
+    inputText.value = '';
 });
 
 inputText.addEventListener('input', function(event) {
@@ -33,11 +44,10 @@ inputText.addEventListener('input', function(event) {
     }
 });
 
-const buttonClick = document.querySelectorAll(".number");
+// const buttonClick = document.querySelectorAll(".number");
 
-buttonClick.forEach(function(button) {
-    button.addEventListener('click', function(event) {
-      // Your event handling code goes here
-        console.log(event.target.value);
-    });
-});
+// buttonClick.forEach(function(button) {
+//     button.addEventListener('click', function(event) {
+//         console.log(event.target.value);
+//     });
+// });

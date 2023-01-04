@@ -13,7 +13,18 @@
 //         textInput.value = value.replace(accentedLetters, ""); /*Removes the accented letters, capital letters and numbers*/
 //     }
 // });
+
 const inputText = document.getElementById('text');
+const clear = document.getElementById('clear');
+const delButton = document.getElementById('delete');
+
+delButton.addEventListener('click', () => {
+    inputText.value = inputText.value.slice(0, -1);
+});
+
+clear.addEventListener('click', () =>{
+    inputText.value = '';12
+});
 
 inputText.addEventListener('input', function(event) {
     if (this.value.length > 10) {

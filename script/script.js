@@ -19,7 +19,7 @@ const clear = document.getElementById('clear');
 const delButton = document.getElementById('delete');
 const numbers = document.querySelectorAll('.number');
 
-numbers.forEach((number) => {
+numbers.forEach((number) => {//Function that adds the numbers to the input
     number.addEventListener('click', function(event) {
         inputText.value += number.value;
         if (inputText.value.length > 10) {
@@ -30,15 +30,15 @@ numbers.forEach((number) => {
 });
 
 delButton.addEventListener('click', () => {
-    inputText.value = inputText.value.slice(0, -1);
+    inputText.value = inputText.value.slice(0, -1);//Function that deletes the last character
 });
 
 clear.addEventListener('click', () =>{
-    inputText.value = '';
+    inputText.value = '';//Function that clears the input
 });
 
 inputText.addEventListener('input', function(event) {
-    if (this.value.length > 10) {
+    if (this.value.length > 10) { //Function that limits the number of characters to 10
         event.preventDefault();
         this.value = this.value.slice(0, 10);
     }

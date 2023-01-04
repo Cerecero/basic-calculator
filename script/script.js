@@ -15,10 +15,26 @@
 // });
 
 const inputText = document.getElementById('text');
+const resultText = document.getElementById('textResult');
 const clear = document.getElementById('clear');
 const delButton = document.getElementById('delete');
 const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operation');
 
+operators.forEach((operator) => {//Function that adds the operators to the input
+    operator.addEventListener('click', function(event) {
+        ;
+        let variable = this.value;
+        console.log(variable);
+        resultText.value = inputText.value += variable;
+        // resultText.innerHTML = inputText.value += operator.value;
+        // console.log(inputText.value);
+        // if (inputText.value.length > 10) {
+        //     event.preventDefault();
+        //     inputText.value = inputText.value.slice(0, 10);
+        // }
+    });
+});
 numbers.forEach((number) => {//Function that adds the numbers to the input
     number.addEventListener('click', function(event) {
         inputText.value += number.value;

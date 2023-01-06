@@ -38,7 +38,9 @@ button{
     text-align: right;
     padding: 0 10px;
     line-height: 100px;
+    outline: black;
 }
+
 .buttons{
     display: flex;
     padding-top: 4px;

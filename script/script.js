@@ -15,13 +15,50 @@
 // });
 
 const inputText = document.getElementById('text');
+const resultText = document.getElementById('textResult');
 const clear = document.getElementById('clear');
 const delButton = document.getElementById('delete');
 const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operation');
 
+let inputValue = '';
+let resultValue = '';
+let currentOperator = '';
+
+operators.forEach((operation) => {//Function that adds the operators to the input
+    operation.addEventListener('click', function(event) {
+        if (operation.value === '+' || operation.value === '-' || operation.value === '*' || operation.value === '/'|| operation.value === '%') {
+        currentOperator = operation.value;
+        resultValue += inputValue + currentOperator;
+        inputValue = '';
+        } else if (operation.value === '=') {
+        switch (currentOperator) {
+            case '+':
+            resultValue = parseFloat(resultValue) + parseFloat(inputValue);
+            break;
+            case '-':
+            resultValue = parseFloat(resultValue) - parseFloat(inputValue);
+            break;
+            case '*':
+              resultValue = parseFloat(resultValue) * parseFloat(inputValue);
+            break;
+            case '/':
+            resultValue = parseFloat(resultValue) / parseFloat(inputValue);
+            break;
+            case '%':
+            resultValue = parseFloat(resultValue) % parseFloat(inputValue);
+            break;
+        }
+        nputValue = '';
+        currentOperator = '';
+        }
+        resultText.value = resultValue;
+    });
+});
 numbers.forEach((number) => {//Function that adds the numbers to the input
     number.addEventListener('click', function(event) {
-        inputText.value += number.value;
+        inputValue += number.value;
+        inputText.value = inputValue;
         if (inputText.value.length > 10) {
             event.preventDefault();
             inputText.value = inputText.value.slice(0, 10);
@@ -30,11 +67,16 @@ numbers.forEach((number) => {//Function that adds the numbers to the input
 });
 
 delButton.addEventListener('click', () => {
-    inputText.value = inputText.value.slice(0, -1);//Function that deletes the last character
+    inputText.value = inputText.value.slice(0, -1);
+    inputText.value = inputValue;//Function that deletes the last character
 });
 
 clear.addEventListener('click', () =>{
-    inputText.value = '';//Function that clears the input
+    inputValue = '';
+    resultValue = '';
+    currentOperator = '';
+    inputText.value = '';
+    resultText.value = '';//Function that clears the input
 });
 
 inputText.addEventListener('input', function(event) {
@@ -43,11 +85,3 @@ inputText.addEventListener('input', function(event) {
         this.value = this.value.slice(0, 10);
     }
 });
-
-// const buttonClick = document.querySelectorAll(".number");
-
-// buttonClick.forEach(function(button) {
-//     button.addEventListener('click', function(event) {
-//         console.log(event.target.value);
-//     });
-// });
